@@ -1,0 +1,942 @@
+[
+{
+  "model": "builder.category",
+  "pk": 9,
+  "fields": {
+    "slug": "cpu",
+    "name_pl": "Procesor",
+    "sort_order": 10
+  }
+},
+{
+  "model": "builder.category",
+  "pk": 10,
+  "fields": {
+    "slug": "motherboard",
+    "name_pl": "Płyta główna",
+    "sort_order": 20
+  }
+},
+{
+  "model": "builder.category",
+  "pk": 11,
+  "fields": {
+    "slug": "ram",
+    "name_pl": "Pamięć RAM",
+    "sort_order": 30
+  }
+},
+{
+  "model": "builder.category",
+  "pk": 12,
+  "fields": {
+    "slug": "gpu",
+    "name_pl": "Karta graficzna",
+    "sort_order": 40
+  }
+},
+{
+  "model": "builder.category",
+  "pk": 13,
+  "fields": {
+    "slug": "storage",
+    "name_pl": "Dysk",
+    "sort_order": 50
+  }
+},
+{
+  "model": "builder.category",
+  "pk": 14,
+  "fields": {
+    "slug": "cooler",
+    "name_pl": "Chłodzenie",
+    "sort_order": 60
+  }
+},
+{
+  "model": "builder.category",
+  "pk": 15,
+  "fields": {
+    "slug": "case",
+    "name_pl": "Obudowa",
+    "sort_order": 70
+  }
+},
+{
+  "model": "builder.category",
+  "pk": 16,
+  "fields": {
+    "slug": "psu",
+    "name_pl": "Zasilacz",
+    "sort_order": 80
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 57,
+  "fields": {
+    "category": 9,
+    "name": "AMD Ryzen 5 7600X",
+    "description": "6 rdzeni / 12 wątków, boost do 5,3 GHz, odblokowany mnożnik.",
+    "price_pln": "1299.00",
+    "power_watts": 105,
+    "specs": {
+      "socket": "AM5"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 58,
+  "fields": {
+    "category": 9,
+    "name": "AMD Ryzen 7 7800X3D",
+    "description": "Gamingowy CPU z pamięcią 3D V-Cache, socket AM5.",
+    "price_pln": "2499.00",
+    "power_watts": 120,
+    "specs": {
+      "socket": "AM5"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 59,
+  "fields": {
+    "category": 9,
+    "name": "AMD Ryzen 5 5600",
+    "description": "6C/12T, energooszczędny, platforma AM4.",
+    "price_pln": "699.00",
+    "power_watts": 65,
+    "specs": {
+      "socket": "AM4"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 60,
+  "fields": {
+    "category": 9,
+    "name": "Intel Core i5-13600K",
+    "description": "Hybrydowe rdzenie P+E, LGA1700, iGPU.",
+    "price_pln": "1599.00",
+    "power_watts": 125,
+    "specs": {
+      "socket": "LGA1700"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 61,
+  "fields": {
+    "category": 9,
+    "name": "Intel Core i7-13700K",
+    "description": "Wysoka wielowątkowość, LGA1700.",
+    "price_pln": "2199.00",
+    "power_watts": 125,
+    "specs": {
+      "socket": "LGA1700"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 62,
+  "fields": {
+    "category": 9,
+    "name": "Intel Core i3-13100",
+    "description": "Podstawowy model LGA1700 z iGPU.",
+    "price_pln": "649.00",
+    "power_watts": 60,
+    "specs": {
+      "socket": "LGA1700"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 63,
+  "fields": {
+    "category": 9,
+    "name": "AMD Ryzen 9 7900X",
+    "description": "12 rdzeni AM5, wysoka wydajność twórcza.",
+    "price_pln": "2199.00",
+    "power_watts": 170,
+    "specs": {
+      "socket": "AM5"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 64,
+  "fields": {
+    "category": 10,
+    "name": "MSI B650M Gaming WiFi",
+    "description": "mATX, WiFi 6E, DDR5, PCIe 4.0.",
+    "price_pln": "899.00",
+    "power_watts": 15,
+    "specs": {
+      "socket": "AM5",
+      "ram_type": "DDR5",
+      "form_factor": "mATX",
+      "m2_slots": 2,
+      "extra_w": 20
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 65,
+  "fields": {
+    "category": 10,
+    "name": "ASUS TUF Gaming B650-PLUS",
+    "description": "ATX, solidne VRM, DDR5, 2x M.2.",
+    "price_pln": "1049.00",
+    "power_watts": 18,
+    "specs": {
+      "socket": "AM5",
+      "ram_type": "DDR5",
+      "form_factor": "ATX",
+      "m2_slots": 2,
+      "extra_w": 25
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 66,
+  "fields": {
+    "category": 10,
+    "name": "Gigabyte B760M DS3H DDR4",
+    "description": "mATX, DDR4, LGA1700, podstawowe M.2.",
+    "price_pln": "549.00",
+    "power_watts": 15,
+    "specs": {
+      "socket": "LGA1700",
+      "ram_type": "DDR4",
+      "form_factor": "mATX",
+      "m2_slots": 1,
+      "extra_w": 18
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 67,
+  "fields": {
+    "category": 10,
+    "name": "ASUS Prime B760-PLUS",
+    "description": "ATX, DDR5, LGA1700.",
+    "price_pln": "699.00",
+    "power_watts": 18,
+    "specs": {
+      "socket": "LGA1700",
+      "ram_type": "DDR5",
+      "form_factor": "ATX",
+      "m2_slots": 2,
+      "extra_w": 22
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 68,
+  "fields": {
+    "category": 10,
+    "name": "ASRock A520M-HDV",
+    "description": "Budżetowa płyta AM4, DDR4.",
+    "price_pln": "329.00",
+    "power_watts": 12,
+    "specs": {
+      "socket": "AM4",
+      "ram_type": "DDR4",
+      "form_factor": "mATX",
+      "m2_slots": 1,
+      "extra_w": 15
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 69,
+  "fields": {
+    "category": 10,
+    "name": "MSI PRO Z790-P WiFi",
+    "description": "ATX, DDR5, wiele M.2, LGA1700.",
+    "price_pln": "1199.00",
+    "power_watts": 22,
+    "specs": {
+      "socket": "LGA1700",
+      "ram_type": "DDR5",
+      "form_factor": "ATX",
+      "m2_slots": 3,
+      "extra_w": 28
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 70,
+  "fields": {
+    "category": 10,
+    "name": "ASRock H610M-HDV (bez M.2)",
+    "description": "Ekstremalnie uproszczona płyta LGA1700 — tylko SATA (demo konfliktu z NVMe).",
+    "price_pln": "399.00",
+    "power_watts": 14,
+    "specs": {
+      "socket": "LGA1700",
+      "ram_type": "DDR4",
+      "form_factor": "mATX",
+      "m2_slots": 0,
+      "extra_w": 16
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 71,
+  "fields": {
+    "category": 11,
+    "name": "Kingston Fury Beast 16 GB DDR5 5600",
+    "description": "Pojedynczy moduł, XMP/EXPO zależne od płyty.",
+    "price_pln": "349.00",
+    "power_watts": 5,
+    "specs": {
+      "ram_type": "DDR5",
+      "capacity_gb": 16,
+      "modules": 1
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 72,
+  "fields": {
+    "category": 11,
+    "name": "Corsair Vengeance 32 GB DDR5 6000 (2x16)",
+    "description": "Zestaw dual-channel DDR5.",
+    "price_pln": "599.00",
+    "power_watts": 8,
+    "specs": {
+      "ram_type": "DDR5",
+      "capacity_gb": 32,
+      "modules": 2
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 73,
+  "fields": {
+    "category": 11,
+    "name": "G.Skill Ripjaws V 32 GB DDR4 3600",
+    "description": "Stabilny zestaw DDR4.",
+    "price_pln": "499.00",
+    "power_watts": 6,
+    "specs": {
+      "ram_type": "DDR4",
+      "capacity_gb": 32,
+      "modules": 2
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 74,
+  "fields": {
+    "category": 11,
+    "name": "Kingston Fury 16 GB DDR4 3200",
+    "description": "Uniwersalny moduł DDR4.",
+    "price_pln": "249.00",
+    "power_watts": 4,
+    "specs": {
+      "ram_type": "DDR4",
+      "capacity_gb": 16,
+      "modules": 1
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 75,
+  "fields": {
+    "category": 11,
+    "name": "Crucial 16 GB DDR5 4800",
+    "description": "Standard JEDEC DDR5.",
+    "price_pln": "299.00",
+    "power_watts": 5,
+    "specs": {
+      "ram_type": "DDR5",
+      "capacity_gb": 16,
+      "modules": 1
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 76,
+  "fields": {
+    "category": 11,
+    "name": "TeamGroup T-Force 8 GB DDR4 2666",
+    "description": "Podstawowy moduł biurowy.",
+    "price_pln": "99.00",
+    "power_watts": 3,
+    "specs": {
+      "ram_type": "DDR4",
+      "capacity_gb": 8,
+      "modules": 1
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 77,
+  "fields": {
+    "category": 11,
+    "name": "Patriot Viper 64 GB DDR5 6000",
+    "description": "Wysoka pojemność dla stacji roboczej.",
+    "price_pln": "1199.00",
+    "power_watts": 10,
+    "specs": {
+      "ram_type": "DDR5",
+      "capacity_gb": 64,
+      "modules": 2
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 78,
+  "fields": {
+    "category": 12,
+    "name": "NVIDIA GeForce RTX 4060",
+    "description": "1080p/1440p, DLSS 3, niskie TDP.",
+    "price_pln": "1599.00",
+    "power_watts": 115,
+    "specs": {}
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 79,
+  "fields": {
+    "category": 12,
+    "name": "NVIDIA GeForce RTX 4070",
+    "description": "Solidna wydajność 1440p.",
+    "price_pln": "2499.00",
+    "power_watts": 200,
+    "specs": {}
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 80,
+  "fields": {
+    "category": 12,
+    "name": "AMD Radeon RX 7600",
+    "description": "Energooszczędna karta mid-range.",
+    "price_pln": "1299.00",
+    "power_watts": 165,
+    "specs": {}
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 81,
+  "fields": {
+    "category": 12,
+    "name": "NVIDIA GeForce RTX 4060 Ti",
+    "description": "Więcej VRAM w segmencie mid.",
+    "price_pln": "1899.00",
+    "power_watts": 160,
+    "specs": {}
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 82,
+  "fields": {
+    "category": 12,
+    "name": "NVIDIA GeForce GTX 1650",
+    "description": "Niskoprofilowa karta biurowa.",
+    "price_pln": "699.00",
+    "power_watts": 75,
+    "specs": {}
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 83,
+  "fields": {
+    "category": 12,
+    "name": "NVIDIA GeForce RTX 4080",
+    "description": "Wydajność high-end.",
+    "price_pln": "5499.00",
+    "power_watts": 320,
+    "specs": {}
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 84,
+  "fields": {
+    "category": 12,
+    "name": "AMD Radeon RX 7800 XT",
+    "description": "Świetna relacja cena/wydajność.",
+    "price_pln": "2899.00",
+    "power_watts": 263,
+    "specs": {}
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 85,
+  "fields": {
+    "category": 13,
+    "name": "Samsung 990 PRO 2 TB",
+    "description": "Szybki dysk NVMe PCIe 4.0.",
+    "price_pln": "999.00",
+    "power_watts": 8,
+    "specs": {
+      "interface": "NVMe"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 86,
+  "fields": {
+    "category": 13,
+    "name": "WD Blue SN580 1 TB",
+    "description": "Popularny NVMe na co dzień.",
+    "price_pln": "399.00",
+    "power_watts": 5,
+    "specs": {
+      "interface": "NVMe"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 87,
+  "fields": {
+    "category": 13,
+    "name": "Crucial MX500 1 TB",
+    "description": "Niezawodny SATA SSD 2.5.",
+    "price_pln": "459.00",
+    "power_watts": 3,
+    "specs": {
+      "interface": "SATA"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 88,
+  "fields": {
+    "category": 13,
+    "name": "Kingston NV2 500 GB",
+    "description": "Tani start NVMe.",
+    "price_pln": "199.00",
+    "power_watts": 4,
+    "specs": {
+      "interface": "NVMe"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 89,
+  "fields": {
+    "category": 13,
+    "name": "Samsung 870 QVO 2 TB",
+    "description": "Pojemny SATA SSD.",
+    "price_pln": "599.00",
+    "power_watts": 4,
+    "specs": {
+      "interface": "SATA"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 90,
+  "fields": {
+    "category": 13,
+    "name": "Seagate Barracuda 2 TB",
+    "description": "HDD 7200 obr. SATA.",
+    "price_pln": "289.00",
+    "power_watts": 7,
+    "specs": {
+      "interface": "SATA"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 91,
+  "fields": {
+    "category": 13,
+    "name": "ADATA Legend 800 2 TB",
+    "description": "NVMe PCIe 4.0, dobry zapas miejsca.",
+    "price_pln": "749.00",
+    "power_watts": 6,
+    "specs": {
+      "interface": "NVMe"
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 92,
+  "fields": {
+    "category": 14,
+    "name": "DeepCool AK620",
+    "description": "Twin tower, cicha praca, szeroka kompatybilność.",
+    "price_pln": "299.00",
+    "power_watts": 3,
+    "specs": {
+      "sockets": [
+        "AM5",
+        "AM4",
+        "LGA1700"
+      ],
+      "universal": false
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 93,
+  "fields": {
+    "category": 14,
+    "name": "AMD Wraith Stealth (box)",
+    "description": "Chłodzenie boxowe pod AM4.",
+    "price_pln": "0.01",
+    "power_watts": 0,
+    "specs": {
+      "sockets": [
+        "AM4"
+      ],
+      "universal": false
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 94,
+  "fields": {
+    "category": 14,
+    "name": "Noctua NH-D15 chromax.black",
+    "description": "Flagowy cooler powietrzny.",
+    "price_pln": "549.00",
+    "power_watts": 2,
+    "specs": {
+      "sockets": [
+        "AM5",
+        "AM4",
+        "LGA1700"
+      ],
+      "universal": false
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 95,
+  "fields": {
+    "category": 14,
+    "name": "Arctic Liquid Freezer III 360",
+    "description": "AIO 360 mm, wysoka wydajność.",
+    "price_pln": "649.00",
+    "power_watts": 12,
+    "specs": {
+      "sockets": [
+        "AM5",
+        "LGA1700"
+      ],
+      "universal": false
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 96,
+  "fields": {
+    "category": 14,
+    "name": "be quiet! Dark Rock 4",
+    "description": "Cichy cooler jednowieżowy.",
+    "price_pln": "399.00",
+    "power_watts": 2,
+    "specs": {
+      "sockets": [
+        "AM4",
+        "LGA1700"
+      ],
+      "universal": false
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 97,
+  "fields": {
+    "category": 14,
+    "name": "Cooler Master Hyper 212 Spectrum",
+    "description": "Klasyczna wieża, szerokie sockety.",
+    "price_pln": "199.00",
+    "power_watts": 2,
+    "specs": {
+      "sockets": [
+        "AM5",
+        "AM4",
+        "LGA1700"
+      ],
+      "universal": false
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 98,
+  "fields": {
+    "category": 14,
+    "name": "SilentiumPC Fortis 5",
+    "description": "Polski hit cenowy.",
+    "price_pln": "179.00",
+    "power_watts": 2,
+    "specs": {
+      "sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700"
+      ],
+      "universal": false
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 99,
+  "fields": {
+    "category": 15,
+    "name": "Fractal Design North",
+    "description": "ATX z drewnianym frontem, dobra wentylacja.",
+    "price_pln": "599.00",
+    "power_watts": 5,
+    "specs": {
+      "supported_mb": [
+        "ATX",
+        "mATX",
+        "Mini-ITX"
+      ]
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 100,
+  "fields": {
+    "category": 15,
+    "name": "NZXT H5 Flow",
+    "description": "Nowoczesny airflow ATX.",
+    "price_pln": "749.00",
+    "power_watts": 6,
+    "specs": {
+      "supported_mb": [
+        "ATX",
+        "mATX",
+        "Mini-ITX"
+      ]
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 101,
+  "fields": {
+    "category": 15,
+    "name": "Cooler Master NR200",
+    "description": "Kompakt ITX/SFF — tylko małe płyty.",
+    "price_pln": "449.00",
+    "power_watts": 4,
+    "specs": {
+      "supported_mb": [
+        "Mini-ITX"
+      ]
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 102,
+  "fields": {
+    "category": 15,
+    "name": "be quiet! Pure Base 500",
+    "description": "Cicha obudowa ATX.",
+    "price_pln": "529.00",
+    "power_watts": 5,
+    "specs": {
+      "supported_mb": [
+        "ATX",
+        "mATX",
+        "Mini-ITX"
+      ]
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 103,
+  "fields": {
+    "category": 15,
+    "name": "DeepCool MATREXX 30",
+    "description": "mATX tower — brak wsparcia dla pełnego ATX.",
+    "price_pln": "319.00",
+    "power_watts": 4,
+    "specs": {
+      "supported_mb": [
+        "mATX",
+        "Mini-ITX"
+      ]
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 104,
+  "fields": {
+    "category": 15,
+    "name": "Corsair 4000D Airflow",
+    "description": "Klasyk ATX z dobrym przepływem.",
+    "price_pln": "499.00",
+    "power_watts": 5,
+    "specs": {
+      "supported_mb": [
+        "ATX",
+        "mATX",
+        "Mini-ITX"
+      ]
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 105,
+  "fields": {
+    "category": 15,
+    "name": "Lian Li O11 Dynamic EVO",
+    "description": "Duża obudowa pod custom loop / wiele radiatorów.",
+    "price_pln": "999.00",
+    "power_watts": 8,
+    "specs": {
+      "supported_mb": [
+        "ATX",
+        "mATX",
+        "Mini-ITX"
+      ]
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 106,
+  "fields": {
+    "category": 16,
+    "name": "Corsair CV550",
+    "description": "550 W, 80+ Bronze — do biura lub lekkiego gamingu.",
+    "price_pln": "299.00",
+    "power_watts": 0,
+    "specs": {
+      "wattage": 550
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 107,
+  "fields": {
+    "category": 16,
+    "name": "EVGA 650 GQ",
+    "description": "650 W, modularność częściowa, 80+ Gold.",
+    "price_pln": "459.00",
+    "power_watts": 0,
+    "specs": {
+      "wattage": 650
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 108,
+  "fields": {
+    "category": 16,
+    "name": "be quiet! Straight Power 12 750W",
+    "description": "750 W, cisza i stabilizacja napięć.",
+    "price_pln": "699.00",
+    "power_watts": 0,
+    "specs": {
+      "wattage": 750
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 109,
+  "fields": {
+    "category": 16,
+    "name": "Seasonic Focus GX 850",
+    "description": "850 W, w pełni modularny.",
+    "price_pln": "899.00",
+    "power_watts": 0,
+    "specs": {
+      "wattage": 850
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 110,
+  "fields": {
+    "category": 16,
+    "name": "Thermaltake Smart 500W",
+    "description": "Podstawowy zasilacz 500 W.",
+    "price_pln": "199.00",
+    "power_watts": 0,
+    "specs": {
+      "wattage": 500
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 111,
+  "fields": {
+    "category": 16,
+    "name": "Corsair RM1000e",
+    "description": "1000 W, ATX 3.0, rezerwa pod RTX 4080.",
+    "price_pln": "1099.00",
+    "power_watts": 0,
+    "specs": {
+      "wattage": 1000
+    }
+  }
+},
+{
+  "model": "builder.component",
+  "pk": 112,
+  "fields": {
+    "category": 16,
+    "name": "Endorfy Vero L5 650W",
+    "description": "Polski brand, 80+ Bronze.",
+    "price_pln": "329.00",
+    "power_watts": 0,
+    "specs": {
+      "wattage": 650
+    }
+  }
+}
+]
