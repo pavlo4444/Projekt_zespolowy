@@ -1,0 +1,15 @@
+{% extends "builder/base.html" %}
+{% block title %}Logowanie{% endblock %}
+{% block content %}
+<h1>Logowanie</h1>
+<form method="post" class="auth-form">
+  {% csrf_token %}
+  {% if form.non_field_errors %}
+    <div class="error">{{ form.non_field_errors }}</div>
+  {% endif %}
+  <label>Nazwa użytkownika {{ form.username }}</label>
+  <label>Hasło {{ form.password }}</label>
+  <button class="btn primary" type="submit">Zaloguj</button>
+</form>
+<p>Nie masz konta? <a href="{% url 'builder:register' %}">Zarejestruj się</a></p>
+{% endblock %}

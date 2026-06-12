@@ -1,0 +1,12 @@
+{% extends "builder/base.html" %}
+{% block title %}Konfigurator PC — Start{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Skonfiguruj komputer jak u siebie w salonie</h1>
+  <p class="lead">Wybierz podzespoły, zobacz cenę i pobór mocy. System sprawdzi zgodność (socket RAM, obudowa, zasilacz i in.).</p>
+  <div class="hero-actions">
+    <a class="btn primary" href="{% url 'builder:builder' %}">Otwórz konfigurator</a>
+    <a class="btn ghost" href="{% url 'builder:search' %}">Szukaj komponentów</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Konfigurator PC{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'builder/css/style.css' %}?v=13">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="{% url 'builder:index' %}">PC<span>Build</span>PL</a>
+      <nav class="nav">
+        <a href="{% url 'builder:index' %}">Start</a>
+        <a href="{% url 'builder:builder' %}">Konfigurator</a>
+        <a href="{% url 'builder:search' %}">Szukaj</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'builder:my_builds' %}">Moje zestawy</a>
+          <form class="inline-logout" action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="linkish">Wyloguj</button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}">Logowanie</a>
+          <a href="{% url 'builder:register' %}">Rejestracja</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+  {% if messages %}
+    <div class="wrap messages">
+      {% for message in messages %}
+        <p class="flash">{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+  <main class="wrap">{% block content %}{% endblock %}</main>
+  <footer class="site-footer">
+    <div class="wrap muted">Konfigurator PC — wersja demonstracyjna. Ceny i specyfikacje są przykładowe.</div>
+  </footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
