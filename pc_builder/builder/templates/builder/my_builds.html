@@ -1,0 +1,52 @@
+{% extends "builder/base.html" %}
+{% block title %}Moje zestawy{% endblock %}
+{% block content %}
+<h1>Zapisane zestawy</h1>
+<p class="muted">Kliknij zestaw, aby rozwinąć lub zwinąć listę komponentów.</p>
+{% if builds %}
+  <ul class="build-saved-list">
+    {% for b in builds %}
+      <li class="build-saved-card">
+        <form method="post" action="{% url 'builder:delete_build' b.id %}" class="build-delete-form" onsubmit="return confirm('Usunąć zestaw „{{ b.title|escapejs }}”?');">
+          {% csrf_token %}
+          <button type="submit" class="btn-icon build-delete-btn" aria-label="Usuń zestaw {{ b.title }}" title="Usuń zestaw">×</button>
+        </form>
+        <details class="build-details">
+          <summary class="build-details-trigger">
+            <div class="build-summary-main">
+              <h3>{{ b.title }}</h3>
+              <div class="muted small">{{ b.updated_at }}</div>
+              <div class="build-saved-summary">
+                Suma: <strong>{{ b.total_price_pln }} zł</strong> · Szacowany pobór: <strong>{{ b.total_power_w }} W</strong>
+              </div>
+            </div>
+            <span class="build-chevron" aria-hidden="true">▾</span>
+          </summary>
+          {% if b.display_parts %}
+            <div class="build-parts">
+              <h4 class="build-parts-title">Komponenty</h4>
+              <ul class="build-parts-list">
+                {% for part in b.display_parts %}
+                  <li class="build-part{% if part.missing %} build-part--missing{% endif %}">
+                    <span class="build-part-cat">{{ part.category_name }}</span>
+                    <strong class="build-part-name">{{ part.name }}</strong>
+                    {% if part.description %}
+                      <p class="build-part-desc muted small">{{ part.description }}</p>
+                    {% endif %}
+                    <span class="build-part-meta muted small">{{ part.price_pln }} zł · {{ part.power_watts }} W</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% else %}
+            <p class="muted small build-parts-empty">Brak zapisanych komponentów w tym zestawie.</p>
+          {% endif %}
+        </details>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Nie masz jeszcze zapisanych zestawów.</p>
+{% endif %}
+<p><a class="btn ghost" href="{% url 'builder:builder' %}">Wróć do konfiguratora</a></p>
+{% endblock %}
