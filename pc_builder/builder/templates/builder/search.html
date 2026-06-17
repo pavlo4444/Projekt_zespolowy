@@ -1,0 +1,28 @@
+{% extends "builder/base.html" %}
+{% block title %}Szukaj — Konfigurator PC{% endblock %}
+{% block content %}
+<h1>Wyszukiwarka komponentów</h1>
+<form class="search-bar" method="get" action="{% url 'builder:search' %}">
+  <input type="search" name="q" value="{{ q }}" placeholder="Wpisz nazwę lub fragment opisu…" autocomplete="off">
+  <button class="btn primary" type="submit">Szukaj</button>
+</form>
+{% if q %}
+  <p class="muted">Wyniki dla: <strong>{{ q }}</strong> (max 50)</p>
+  {% if results %}
+    <ul class="result-list">
+      {% for c in results %}
+        <li>
+          <div>
+            <strong>{{ c.name }}</strong>
+            <span class="badge">{{ c.category.name_pl }}</span>
+          </div>
+          <div class="muted small">{{ c.description|truncatewords:28 }}</div>
+          <div class="price">{{ c.price_pln }} zł · {{ c.power_watts }} W</div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Brak wyników.</p>
+  {% endif %}
+{% endif %}
+{% endblock %}
