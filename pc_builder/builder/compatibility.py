@@ -120,3 +120,19 @@ def validate_build_by_category(selection: dict[str, int | None]) -> dict[str, li
             _add_issue(by_cat, ["psu"], msg)
 
     return by_cat
+
+def category_status(
+    selection: dict[str, int | None],
+    by_category: dict[str, list[str]],
+) -> dict[str, str]:
+    """empty | ok | error — status wizualny każdej kategorii."""
+    parts = _by_slug(selection)
+    status: dict[str, str] = {}
+    for slug in selection:
+        if not parts.get(slug):
+            status[slug] = "empty"
+        elif by_category.get(slug):
+            status[slug] = "error"
+        else:
+            status[slug] = "ok"
+    return status
