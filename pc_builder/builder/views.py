@@ -60,6 +60,18 @@ def _serialize_component(c: Component) -> dict[str, Any]:
         "category_name": c.category.name_pl,
     }
 
+def search_view(request: HttpRequest):
+    q = (request.GET.get("q") or "").strip()
+    results = []
+    if q:
+        results = list(
+            Component.objects.select_related("category")
+            .filter(Q(name__icontains=q) | Q(description__icontains=q))
+            .order_by("category__sort_order", "name")[:50]
+        )
+    return render(request, "builder/search.html", {"q": q, "results": results})
+
+
 def _empty_selection() -> dict[str, int | None]:
     return {slug: None for slug in CATEGORY_ORDER}
 
