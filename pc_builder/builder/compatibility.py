@@ -136,3 +136,14 @@ def category_status(
         else:
             status[slug] = "ok"
     return status
+
+def validate_build(selection: dict[str, int | None]) -> list[str]:
+    by_cat = validate_build_by_category(selection)
+    seen: set[str] = set()
+    flat: list[str] = []
+    for msgs in by_cat.values():
+        for msg in msgs:
+            if msg not in seen:
+                seen.add(msg)
+                flat.append(msg)
+    return flat
