@@ -1,0 +1,105 @@
+{% extends "builder/base.html" %}
+{% load static %}
+{% block title %}Konfigurator PC{% endblock %}
+{% block content %}
+{% csrf_token %}
+<section class="config-hero">
+  <h1>Konfigurator PC</h1>
+  <p class="muted">
+    <a href="#info-accordion" id="info-link">Instrukcja</a> ·
+    <a href="{% url 'builder:search' %}">Szukaj części</a> ·
+    {% if user.is_authenticated %}<a href="{% url 'builder:my_builds' %}">Moje zestawy</a>{% endif %}
+  </p>
+</section>
+
+<section class="dashboard">
+  <h2>Podgląd zestawu</h2>
+  <div class="icon-strip" id="icon-strip">
+    {% for tile in icon_tiles %}
+      <div class="icon-tile-wrap" data-slug="{{ tile.slug }}">
+        <div class="icon-tile status-{{ tile.status }}" data-slug="{{ tile.slug }}" data-status="{{ tile.status }}">
+          <span class="ico">{{ tile.abbr }}</span>
+          <span class="lbl">{{ tile.name_pl }}</span>
+          {% if tile.status == 'ok' %}
+            <span class="status-badge status-badge--ok" aria-hidden="true"></span>
+          {% elif tile.status == 'error' %}
+            <button type="button" class="status-badge status-badge--error js-error-badge" aria-label="Pokaż błędy zgodności" aria-expanded="false"></button>
+          {% endif %}
+        </div>
+        <div class="icon-tooltip" id="tooltip-{{ tile.slug }}" role="tooltip" hidden>
+          {% if tile.issues %}
+            <strong>Błędy zgodności</strong>
+            {% for msg in tile.issues %}<p>{{ msg }}</p>{% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="energy-line{% if has_psu_error %} energy-error{% elif total_power %} energy-ok{% endif %}" id="energy-line">
+    <span class="energy-label">
+      <span class="energy-icon" aria-hidden="true">⚡</span>
+      Szacowany pobór mocy:
+      <strong id="hdr-power">{{ total_power }}</strong> W
+    </span>
+    <span class="energy-sep">·</span>
+    <span>Suma: <strong id="hdr-price">{{ total_price }}</strong> zł</span>
+  </div>
+</section>
+
+<section class="panel">
+  <header class="panel-head"><span>jednostka centralna</span></header>
+  <div class="rows" id="category-rows">
+    {% for cat in categories %}
+      <div class="row" data-slug="{{ cat.slug }}">
+        <div class="row-main">
+          <span class="row-ico">{{ cat.slug|slice:":2"|upper }}</span>
+          <div>
+            <div class="row-title">{{ cat.name_pl }}</div>
+            <div class="row-pick muted small" id="pick-{{ cat.slug }}">Nie wybrano</div>
+          </div>
+        </div>
+        <div class="row-meta" id="meta-{{ cat.slug }}"></div>
+        <div class="row-actions">
+          <button type="button" class="btn-icon js-remove" data-slug="{{ cat.slug }}" hidden aria-label="Usuń wybrany komponent">×</button>
+          <button type="button" class="btn small primary js-open" data-slug="{{ cat.slug }}" data-name="{{ cat.name_pl }}">Dodaj</button>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% include "builder/info_panel.html" %}
+
+<div class="modal hidden" id="picker-modal" aria-hidden="true">
+  <div class="modal-backdrop js-close"></div>
+  <div class="modal-card" role="dialog">
+    <header>
+      <h3 id="modal-title">Wybierz komponent</h3>
+      <button type="button" class="icon-btn js-close" aria-label="Zamknij">×</button>
+    </header>
+    <div class="modal-search">
+      <input type="search" id="modal-q" placeholder="Filtruj w kategorii…">
+    </div>
+    <div class="modal-body" id="modal-list"></div>
+  </div>
+</div>
+
+<nav class="bottom-bar">
+  <div class="bottom-left">
+    <button type="button" class="btn ghost" id="btn-share">Udostępnij</button>
+    <button type="button" class="btn ghost" id="btn-clear">Wyczyść</button>
+  </div>
+  <div class="bottom-center muted" id="bottom-summary">
+    Razem: <strong id="sum-price">{{ total_price }}</strong> zł
+  </div>
+  <div class="bottom-right">
+    {% if user.is_authenticated %}
+      <button type="button" class="btn ghost" id="btn-save">Zapisz zestaw</button>
+    {% endif %}
+  </div>
+</nav>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'builder/js/builder.js' %}?v=13"></script>
+{% endblock %}
