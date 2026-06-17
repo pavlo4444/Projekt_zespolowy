@@ -167,3 +167,21 @@ def recommended_ids_for_components(
 ) -> set[int]:
     return {c.id for c in components if is_recommended_for_build(c, selection)}
 
+def totals(selection: dict[str, int | None]) -> tuple[Decimal, int]:
+    price = Decimal("0")
+    power = 0
+    parts = _by_slug(selection)
+    for slug, part in parts.items():
+        if not part:
+            continue
+        price += part.price_pln
+        if slug == "psu":
+            continue
+        if slug == "motherboard":
+            power += int(_spec(part, "extra_w") or 15)
+        else:
+            power += int(part.power_watts or 0)
+    return price, power
+
+def _fmt(x: Any) -> str:
+    return str(x)
