@@ -197,3 +197,54 @@ def api_save_build(request: HttpRequest):
         total_power_w=power,
     )
     return JsonResponse({"ok": True, "id": build.id, "title": build.title})
+
+def _parts_for_saved_build(comp_map: dict[str, Any]) -> list[dict[str, Any]]:
+    parts: list[dict[str, Any]] = []
+    for slug in CATEGORY_ORDER:
+        pk = comp_map.get(slug)
+        if not pk:
+            continue
+        try:
+            c = Component.objects.select_related("category").get(pk=int(pk))
+            parts.append(
+                {
+                    "slug": slug,
+                    "category_name": c.category.name_pl,
+                    "name": c.name,
+                    "description": c.description,
+                    "price_pln": str(c.price_pln),
+                    "power_watts": c.power_watts,
+                }
+            )
+        except (Component.DoesNotExist, ValueError, TypeError):
+            parts.append(
+                {
+                    "slug": slug,
+                    "category_name": slug,
+                    "name": "Komponent niedostępny",
+                    "description": "Ten element został usunięty z bazy danych.",
+                    "price_pln": "—",
+                    "power_watts": 0,
+                    "missing": True,
+                }
+            )
+    return parts
+
+@login_required
+@require_GET
+def my_builds(request: HttpRequest):
+    builds = list(SavedBuild.objects.filter(user=request.user))
+    for b in builds:
+        b.display_parts = _parts_for_saved_build(b.components or {})
+    return render(request, "builder/my_builds.html", {"builds": builds})
+
+
+@login_required
+@require_POST
+def delete_build(request: HttpRequest, build_id: int):
+    deleted, _ = SavedBuild.objects.filter(pk=build_id, user=request.user).delete()
+    if deleted:
+        messages.success(request, "Zestaw został usunięty.")
+    else:
+        messages.error(request, "Nie znaleziono zestawu.")
+    return redirect("builder:my_builds")
