@@ -147,3 +147,23 @@ def validate_build(selection: dict[str, int | None]) -> list[str]:
                 seen.add(msg)
                 flat.append(msg)
     return flat
+
+def is_recommended_for_build(
+    component: Component,
+    selection: dict[str, int | None],
+) -> bool:
+    """Czy komponent pasuje do aktualnie wybranych części (bez konfliktów)."""
+    cat_slug = component.category.slug
+    if not any(v for k, v in selection.items() if k != cat_slug and v):
+        return False
+    test = dict(selection)
+    test[cat_slug] = component.id
+    return len(validate_build(test)) == 0
+
+
+def recommended_ids_for_components(
+    components: list[Component],
+    selection: dict[str, int | None],
+) -> set[int]:
+    return {c.id for c in components if is_recommended_for_build(c, selection)}
+
