@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import json
 from typing import Any
 
@@ -153,6 +155,26 @@ def _build_summary_payload(request: HttpRequest) -> dict[str, Any]:
         "category_status": category_status(selection, by_category),
     }
 
+@require_GET
+def api_build_summary(request: HttpRequest):
+    return JsonResponse(_build_summary_payload(request))
+
+
+@require_GET
+def api_category_components(request: HttpRequest, slug: str):
+    q = (request.GET.get("q") or "").strip()
+    qs = Component.objects.filter(category__slug=slug).select_related("category")
+    if q:
+        qs = qs.filter(Q(name__icontains=q) | Q(description__icontains=q))
+    components = list(qs.order_by("name")[:80])
+    selection = get_selection(request)
+    recommended_ids = recommended_ids_for_components(components, selection)
+    items = []
+    for c in components:
+        item = _serialize_component(c)
+        item["recommended"] = c.id in recommended_ids
+        items.append(item)
+    return JsonResponse({"category": slug, "items": items})
 
 @require_POST
 def api_set_part(request: HttpRequest):
